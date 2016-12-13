@@ -21,7 +21,7 @@ function [idx] = QRSChenDetect(fileName,m)
     numberOfWindows = signalLength/windowSize;
     allWindowsIndexes = 1:(signalLength/windowSize);
     maxValues = arrayfun(@(x) max(filtered(((x-1)*(windowSize)+1):x*windowSize)), allWindowsIndexes);
-    maxValuesIdx = arrayfun(@(x) find(filtered(((x-1)*(windowSize)+1):x*windowSize) == max(filtered(((x-1)*(windowSize)+1):x*windowSize)),1), allWindowsIndexes);
+    maxValuesIdx = arrayfun(@(x) find(filtered(((x-1)*(windowSize)+1):x*windowSize) == maxValues(x),1), allWindowsIndexes);
     
     threshold = max(filtered(1:250))-1;
     detections = zeros(1, signalLength);
